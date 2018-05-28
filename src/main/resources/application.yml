@@ -1,0 +1,36 @@
+server:
+  port: 9411
+spring:
+  application:
+    name: ding-zipkin
+    #spring boot数据源配置
+#  datasource:
+#    url: jdbc:mysql://127.0.0.1:3306/zipkin?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+#    username: root
+#    password: 123456
+#    driver-class-name: com.mysql.jdbc.Driver
+#    initialize: true
+#    continue-on-error: false
+#    type: com.alibaba.druid.pool.DruidDataSource
+  #rabbitmq配置
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: ding
+    password: ding
+#    virtual-host: /ding
+  sleuth:
+    annotation:
+      enabled: false #mq方式设置为false
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+          zkNodes: localhost:2181
+zipkin:
+  storage:
+    StorageComponent: elasticsearch
+    type: elasticsearch
+    elasticsearch:
+      hosts: 127.0.0.1:9200
